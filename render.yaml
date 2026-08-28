@@ -1,0 +1,16 @@
+# Render Blueprint — one-click deploy on Render.com
+services:
+  - type: web
+    name: rfgc-monthly-report
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 3000
+      # Optional: set your free OpenAI-compatible key here (Groq / Gemini / OpenRouter)
+      # or paste it in the app under Admin -> AI Analytics -> AI Settings
+      - key: LLM_API_KEY
+        sync: false
